@@ -20,6 +20,19 @@ class ContactListScreen extends ConsumerWidget {
             icon: ref.watch(themeProvider)
                 ? const Icon(Icons.sunny)
                 : const Icon(Icons.dark_mode)),
+        actions: [
+          // IconButton(
+          // onPressed: () {
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(child: Text('Settings')),
+              PopupMenuItem(child: Text('Help')),
+              PopupMenuItem(child: Text('About')),
+            ],
+          )
+          // },
+          // icon: Icon(Icons.more_vert))
+        ],
       ),
       body: contacts.isEmpty
           ? Center(

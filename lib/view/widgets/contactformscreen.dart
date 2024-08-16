@@ -52,10 +52,10 @@ class _ContactFormScreenState extends ConsumerState<ContactFormScreen> {
       );
 
       if (widget.index != null) {
-      
-        ref.read(contactsProvider.notifier).updateContact(widget.index!, contact);
+        ref
+            .read(contactsProvider.notifier)
+            .updateContact(widget.index!, contact);
       } else {
-      
         ref.read(contactsProvider.notifier).addContact(contact);
       }
 
@@ -85,7 +85,8 @@ class _ContactFormScreenState extends ConsumerState<ContactFormScreen> {
                   },
                   child: CircleAvatar(
                     radius: 40,
-                    backgroundImage: _image != null ? MemoryImage(_image!) : null,
+                    backgroundImage:
+                        _image != null ? MemoryImage(_image!) : null,
                     child: _image == null ? Icon(Icons.camera_alt) : null,
                   ),
                 ),
@@ -93,36 +94,42 @@ class _ContactFormScreenState extends ConsumerState<ContactFormScreen> {
                   initialValue: _name,
                   decoration: InputDecoration(labelText: 'Name'),
                   onSaved: (value) => _name = value!,
-                  validator: (value) => value!.isEmpty ? 'Please enter a name' : null,
+                  validator: (value) =>
+                      value!.isEmpty ? 'Please enter a name' : null,
                 ),
                 TextFormField(
                   initialValue: _phoneNumber,
                   decoration: InputDecoration(labelText: 'Phone Number'),
                   onSaved: (value) => _phoneNumber = value!,
-                  validator: (value) => value!.isEmpty ? 'Please enter a phone number' : null,
+                  validator: (value) =>
+                      value!.isEmpty ? 'Please enter a phone number' : null,
                 ),
                 TextFormField(
                   initialValue: _email,
                   decoration: InputDecoration(labelText: 'Email'),
                   onSaved: (value) => _email = value!,
-                  validator: (value) => value!.isEmpty ? 'Please enter an email' : null,
+                  validator: (value) =>
+                      value!.isEmpty ? 'Please enter an email' : null,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => MapScreen(
-                          onLocationPicked: (lat, long) {
-                            setState(() {
-                              _latitude = lat;
-                              _longitude = long;
-                            });
-                          },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => MapScreen(
+                            onLocationPicked: (lat, long) {
+                              setState(() {
+                                _latitude = lat;
+                                _longitude = long;
+                              });
+                            },
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  child: Text('Pick Location'),
+                      );
+                    },
+                    child: Text('Pick Location'),
+                  ),
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(

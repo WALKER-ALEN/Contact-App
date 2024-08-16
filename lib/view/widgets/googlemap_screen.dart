@@ -15,7 +15,6 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? _mapController;
   LatLng? _pickedLocation;
-
   @override
   void initState() {
     super.initState();
@@ -24,8 +23,8 @@ class _MapScreenState extends State<MapScreen> {
 
   Future<void> _checkLocationPermission() async {
     final isGranted = await requestLocationPermission();
-    if (!isGranted){
-       openAppSettings();
+    if (!isGranted) {
+      openAppSettings();
       Navigator.of(context).pop();
     }
   }
