@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/contact_controller.dart';
 import 'package:flutter_application_1/model/contact_model.dart';
 import 'package:flutter_application_1/services/url_services.dart';
-import 'package:flutter_application_1/view/widgets/contactformscreen.dart';
+import 'package:flutter_application_1/view/map_view_widget.dart';
+import 'package:flutter_application_1/view/contactformscreen.dart';
 import 'package:flutter_application_1/view/widgets/googlemap_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ContactCard extends ConsumerWidget {
   final ContactModel contact;
@@ -61,14 +63,24 @@ class ContactCard extends ConsumerWidget {
             ],
           ),
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => MapScreen(
-                  onLocationPicked: (lat, long) {
-                    Text('Contact location: $lat, $long');
-                  },
-                ),
-              ),
+            //   Navigator.of(context).push(
+            //     MaterialPageRoute(
+            //       builder: (context) =>
+            //       // MapScreen(
+            //       //   onLocationPicked: (lat, long) {
+            //       //     Text('Contact location: $lat, $long');
+            //       //   },
+            //       // ),
+            //     ),
+            //   );
+
+            showModalBottomSheet(
+              context: context,
+              builder: (context) => MapViewWidget(
+                  contactLocation:
+                      contact.latitude == null || contact.longitude == null
+                          ? null
+                          : LatLng(contact.latitude!, contact.longitude!)),
             );
           },
         ),

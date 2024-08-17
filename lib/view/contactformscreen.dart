@@ -83,37 +83,66 @@ class _ContactFormScreenState extends ConsumerState<ContactFormScreen> {
                       _image = image;
                     });
                   },
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundImage:
-                        _image != null ? MemoryImage(_image!) : null,
-                    child: _image == null ? Icon(Icons.camera_alt) : null,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundImage:
+                          _image != null ? MemoryImage(_image!) : null,
+                      child: _image == null ? Icon(Icons.camera_alt) : null,
+                    ),
                   ),
                 ),
-                TextFormField(
-                  initialValue: _name,
-                  decoration: InputDecoration(labelText: 'Name'),
-                  onSaved: (value) => _name = value!,
-                  validator: (value) =>
-                      value!.isEmpty ? 'Please enter a name' : null,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    initialValue: _name,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: 'Name'),
+                    onSaved: (value) => _name = value!,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Please enter a name' : null,
+                  ),
                 ),
-                TextFormField(
-                  initialValue: _phoneNumber,
-                  decoration: InputDecoration(labelText: 'Phone Number'),
-                  onSaved: (value) => _phoneNumber = value!,
-                  validator: (value) =>
-                      value!.isEmpty ? 'Please enter a phone number' : null,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    initialValue: _phoneNumber,
+                    decoration: InputDecoration(
+                      labelText: 'Phone Number',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    onSaved: (value) => _phoneNumber = value!,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Please enter a phone number' : null,
+                  ),
                 ),
-                TextFormField(
-                  initialValue: _email,
-                  decoration: InputDecoration(labelText: 'Email'),
-                  onSaved: (value) => _email = value!,
-                  validator: (value) =>
-                      value!.isEmpty ? 'Please enter an email' : null,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    initialValue: _email,
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    onSaved: (value) => _email = value!,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Please enter an email' : null,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(Colors.blue),
+                      foregroundColor: WidgetStateProperty.all(Colors.white),
+                      shape: WidgetStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20))),
+                    ),
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -133,6 +162,12 @@ class _ContactFormScreenState extends ConsumerState<ContactFormScreen> {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                    foregroundColor: WidgetStateProperty.all(Colors.white),
+                    shape: WidgetStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20))),
+                  ),
                   onPressed: _saveContact,
                   child: Text('Save Contact'),
                 ),

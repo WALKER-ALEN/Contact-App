@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller/contact_controller.dart';
 import 'package:flutter_application_1/controller/themeController.dart';
-import 'package:flutter_application_1/view/widgets/contactcard.dart';
-import 'package:flutter_application_1/view/widgets/contactformscreen.dart';
+import 'package:flutter_application_1/view/contactcard.dart';
+import 'package:flutter_application_1/view/contactformscreen.dart';
+import 'package:flutter_application_1/view/widgets/show_bottom_sheet.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ContactListScreen extends ConsumerWidget {
@@ -57,11 +58,12 @@ class ContactListScreen extends ConsumerWidget {
           color: Colors.white,
         ),
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ContactFormScreen(),
-            ),
-          );
+          // Navigator.of(context).push(
+          //   MaterialPageRoute(
+          //     builder: (context) => showContactForm(context),
+          //   ),
+          // );
+          showContactForm(context);
         },
       ),
     );
